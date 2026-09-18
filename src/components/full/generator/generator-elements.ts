@@ -74,8 +74,8 @@ export const renderGeneratorElements = (
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 180 102 L 180 138 Q 180 148 170 148 L 125 148 Q 115 148 115 158 L 115 187'
-						: 'M 180 102 L 180 138 Q 180 148 170 148 L 125 148 Q 115 148 115 158 L 115 187',
+						? 'M 180 102 L 180 148 L 125 148 L 125 177 L 145 177'
+						: 'M 180 102 L 180 148 L 145 148 L 145 177',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
