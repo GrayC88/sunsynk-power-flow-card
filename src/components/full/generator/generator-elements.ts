@@ -48,7 +48,7 @@ export const renderGeneratorElements = (
 			${renderText(
 				'generator_name',
 				180,
-				42,
+				44,
 				!showGenerator,
 				'st3 st8',
 				colour,
@@ -105,10 +105,10 @@ export const renderGeneratorElements = (
 					undefined,
 					'mdi:generator-mobile',
 					generatorOn ? 'generator-icon' : 'generator-off-icon',
-					166,
-					45,
-					28,
-					28,
+					168,
+					47,
+					24,
+					24,
 				)}
 			</a>
 
