@@ -418,6 +418,16 @@ export interface DataDto {
 	inverterColour;
 	solarColour;
 	auxOffColour;
+	generatorPower: number;
+	generatorStatus;
+	showGenerator: boolean;
+	showDailyGenerator: boolean;
+	generatorColour;
+	generatorOffColour;
+	generatorDynamicColour;
+	stateGeneratorPower: CustomEntity;
+	stateGeneratorStatus: CustomEntity;
+	stateGeneratorDailyEnergy: CustomEntity;
 	batteryEnergy;
 	battery2Energy;
 	batteryTotalEnergy;
