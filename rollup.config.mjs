@@ -14,10 +14,8 @@ const plugins = [
   }),
   commonjs(),
   typescript({
-    tsconfigOverride: {
-      compilerOptions: {
-        noEmit: false,
-      },
+    compilerOptions: {
+      noEmit: false,
     },
   }),
   json(),
