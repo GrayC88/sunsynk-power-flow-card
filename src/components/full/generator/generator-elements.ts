@@ -43,7 +43,7 @@ export const renderGeneratorElements = (
 			id="Generator"
 			style="overflow: visible; display: ${!showGenerator ? 'none' : 'inline'};"
 			x="${config.wide ? '20%' : '3%'}"
-			y="2.5%"
+			y="-5%"
 		>
 			${renderText(
 				'generator_name',
@@ -74,8 +74,8 @@ export const renderGeneratorElements = (
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 180 102 L 180 162'
-						: 'M 180 102 L 180 162',
+						? 'M 180 102 L 180 138 Q 180 148 170 148 L 125 148 Q 115 148 115 158 L 115 187'
+						: 'M 180 102 L 180 138 Q 180 148 170 148 L 125 148 Q 115 148 115 158 L 115 187',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
