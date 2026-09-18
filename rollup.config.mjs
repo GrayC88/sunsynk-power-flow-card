@@ -16,10 +16,10 @@ const plugins = [
   typescript(),
   json(),
   babel({
-    exclude: 'node_modules/**',
+    exclude: ['node_modules/**', '**/*.ts'],
     babelHelpers: 'bundled',
     compact: true,
-    extensions: ['.js', '.ts'],
+    extensions: ['.js'],
     presets: [
       [
         '@babel/env',
