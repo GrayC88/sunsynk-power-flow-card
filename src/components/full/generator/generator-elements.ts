@@ -48,9 +48,9 @@ export const renderGeneratorElements = (
 			<!-- Generator source box -->
 			<rect
 				x="145.15"
-				y="72"
+				y="55"
 				width="70"
-				height="50"
+				height="45"
 				rx="4.5"
 				ry="4.5"
 				fill="none"
@@ -61,7 +61,7 @@ export const renderGeneratorElements = (
 			${renderText(
 				'generator_name',
 				180,
-				68,
+				48,
 				!showGenerator,
 				'st3 st8',
 				colour,
@@ -74,8 +74,8 @@ export const renderGeneratorElements = (
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 180 122 L 180 162'
-						: 'M 180 122 L 180 162',
+						? 'M 180 100 L 180 162'
+						: 'M 180 100 L 180 162',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
@@ -105,18 +105,18 @@ export const renderGeneratorElements = (
 					undefined,
 					'mdi:generator-mobile',
 					generatorOn ? 'generator-icon' : 'generator-off-icon',
-					145,
-					62,
-					70,
-					70,
+					151,
+					53,
+					28,
+					28,
 				)}
 			</a>
 
 			${config.entities?.generator_power
 				? createTextWithPopup(
 						'generator_power',
-						180,
-						100,
+						187,
+						81,
 						!showGenerator,
 						`${largeFont !== true ? 'st14' : 'st4'} st8`,
 						colour,
@@ -131,7 +131,7 @@ export const renderGeneratorElements = (
 			${createTextWithPopup(
 				'generator_daily_value',
 				180,
-				58,
+				38,
 				!showGenerator ||
 					!showDailyGenerator ||
 					!data.stateGeneratorDailyEnergy.isValid(),
