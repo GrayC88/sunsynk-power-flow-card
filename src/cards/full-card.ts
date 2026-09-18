@@ -8,6 +8,7 @@ import { renderBatteryElements } from '../components/full/bat/bat-elements';
 import { renderGridElements } from '../components/full/grid/grid-elements';
 import { renderLoadElements } from '../components/full/load/load-elements';
 import { renderAuxLoadElements } from '../components/full/auxload/aux-elements';
+import { renderGeneratorElements } from '../components/full/generator/generator-elements';
 import { renderInverterElements } from '../components/full/inverter/inverter-elements';
 
 export const fullCard = (
@@ -55,6 +56,9 @@ export const fullCard = (
 
 					<!-- Load Elements -->
 					${renderLoadElements(data, config)}
+
+					<!-- Generator Elements -->
+					${renderGeneratorElements(data, config)}
 
 					<!-- AUX Elements -->
 					${renderAuxLoadElements(data, config)}
