@@ -13,7 +13,13 @@ const plugins = [
     main: true,
   }),
   commonjs(),
-  typescript(),
+  typescript({
+    tsconfigOverride: {
+      compilerOptions: {
+        noEmit: false,
+      },
+    },
+  }),
   json(),
   babel({
     exclude: ['node_modules/**', '**/*.ts'],
