@@ -45,23 +45,10 @@ export const renderGeneratorElements = (
 			x="${config.wide ? '20%' : '3%'}"
 			y="2.5%"
 		>
-			<!-- Generator source box -->
-			<rect
-				x="145.15"
-				y="55"
-				width="70"
-				height="45"
-				rx="4.5"
-				ry="4.5"
-				fill="none"
-				stroke="${colour}"
-				pointer-events="all"
-			/>
-
 			${renderText(
 				'generator_name',
 				180,
-				48,
+				42,
 				!showGenerator,
 				'st3 st8',
 				colour,
@@ -69,13 +56,26 @@ export const renderGeneratorElements = (
 				true,
 			)}
 
+			<!-- Generator power box -->
+			<rect
+				x="145"
+				y="72"
+				width="70"
+				height="30"
+				rx="4.5"
+				ry="4.5"
+				fill="none"
+				stroke="${colour}"
+				pointer-events="all"
+			/>
+
 			<!-- Generator -> inverter flow. The path is deliberately source-to-inverter. -->
 			<svg id="generator-flow">
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 180 100 L 180 162'
-						: 'M 180 100 L 180 162',
+						? 'M 180 102 L 180 162'
+						: 'M 180 102 L 180 162',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
@@ -105,8 +105,8 @@ export const renderGeneratorElements = (
 					undefined,
 					'mdi:generator-mobile',
 					generatorOn ? 'generator-icon' : 'generator-off-icon',
-					151,
-					53,
+					166,
+					45,
 					28,
 					28,
 				)}
@@ -115,8 +115,8 @@ export const renderGeneratorElements = (
 			${config.entities?.generator_power
 				? createTextWithPopup(
 						'generator_power',
-						187,
-						81,
+						180,
+						91,
 						!showGenerator,
 						`${largeFont !== true ? 'st14' : 'st4'} st8`,
 						colour,
@@ -131,7 +131,7 @@ export const renderGeneratorElements = (
 			${createTextWithPopup(
 				'generator_daily_value',
 				180,
-				38,
+				30,
 				!showGenerator ||
 					!showDailyGenerator ||
 					!data.stateGeneratorDailyEnergy.isValid(),
