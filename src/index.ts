@@ -81,6 +81,7 @@ export class SunsynkPowerFlowCard extends LitElement {
 	@query('#battery-flow') batteryFlow?: SVGSVGElement;
 	@query('#load-flow') loadFlow?: SVGSVGElement;
 	@query('#aux-flow') auxFlow?: SVGSVGElement;
+	@query('#generator-flow') generatorFlow?: SVGSVGElement;
 	@query('#ne-flow') neFlow?: SVGSVGElement;
 	@query('#ne1-flow') ne1Flow?: SVGSVGElement;
 
@@ -1927,6 +1928,14 @@ export class SunsynkPowerFlowCard extends LitElement {
 					maxLineWidth,
 					minLineWidth,
 				);
+		const generatorLineWidth = !config.generator.max_power
+			? minLineWidth
+			: this.dynamicLineWidth(
+					Math.abs(generatorPower),
+					config.generator.max_power || Math.abs(generatorPower),
+					maxLineWidth,
+					minLineWidth,
+				);
 		const auxLineWidth = !config.load.max_power
 			? minLineWidth
 			: this.dynamicLineWidth(
@@ -2051,6 +2060,15 @@ export class SunsynkPowerFlowCard extends LitElement {
 					(Math.abs(auxPower) / (loadMaxPower.toNum() || Math.abs(auxPower)));
 			this.changeAnimationSpeed(`aux`, speed);
 			this.changeAnimationSpeed(`aux1`, speed);
+		}
+
+		if (config?.generator?.animation_speed) {
+			const generatorMaxPower = config.generator.max_power || Math.abs(generatorPower) || 1;
+			const speed =
+				config.generator.animation_speed -
+				(config.generator.animation_speed - 1) *
+					(Math.abs(generatorPower) / generatorMaxPower);
+			this.changeAnimationSpeed(`generator`, speed);
 		}
 
 		if (config && config.grid && config.grid.animation_speed) {
@@ -2573,6 +2591,7 @@ export class SunsynkPowerFlowCard extends LitElement {
 			generatorColour,
 			generatorOffColour,
 			generatorDynamicColour,
+			generatorLineWidth,
 			stateGeneratorPower,
 			stateGeneratorStatus,
 			stateGeneratorDailyEnergy,
