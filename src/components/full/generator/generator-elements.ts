@@ -74,8 +74,8 @@ export const renderGeneratorElements = (
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 374 47 L 307 47 L 237 47'
-						: 'M 374 47 L 307 47 L 237 47',
+						? 'M 374 47 L 118 47 Q 108 47 108 57 L 108 162'
+						: 'M 374 47 L 190 47 Q 180 47 180 57 L 180 162',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
@@ -95,7 +95,11 @@ export const renderGeneratorElements = (
 
 			<a
 				href="#"
-				@click=${(e) => Utils.handlePopup(e, config.entities.generator_status)}
+				@click=${(e) =>
+					Utils.handlePopup(
+						e,
+						config.entities.generator_status || config.entities.generator_power,
+					)}
 			>
 				${renderIcon(
 					undefined,
