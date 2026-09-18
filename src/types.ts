@@ -425,6 +425,7 @@ export interface DataDto {
 	generatorColour;
 	generatorOffColour;
 	generatorDynamicColour;
+	generatorLineWidth: number;
 	stateGeneratorPower: CustomEntity;
 	stateGeneratorStatus: CustomEntity;
 	stateGeneratorDailyEnergy: CustomEntity;
