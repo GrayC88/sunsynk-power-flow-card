@@ -158,6 +158,19 @@ export interface sunsynkPowerFlowCardConfig extends LovelaceCardConfig {
 		invert_flow: boolean;
 		custom_label: string;
 	};
+	generator: {
+		show: boolean;
+		name: string;
+		show_daily: boolean;
+		dynamic_colour: boolean;
+		colour: string;
+		off_colour: string;
+		auto_scale: boolean;
+		max_power: number;
+		animation_speed: number;
+		off_threshold: number;
+		navigate: string;
+	};
 	load: {
 		colour: string;
 		off_colour: string;
@@ -285,6 +298,9 @@ export interface CardConfigEntities {
 	essential_power: string;
 	nonessential_power: string;
 	aux_power_166: string;
+	generator_power: string;
+	generator_status: string;
+	generator_daily_energy: string;
 	day_pv_energy_108: string;
 	pv1_power_186: string;
 	pv2_power_187: string;
