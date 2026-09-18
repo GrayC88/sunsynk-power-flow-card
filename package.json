@@ -16,9 +16,9 @@
     "lintfixall": "eslint src/*.ts --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "rollup": "rollup -c",
-    "build": "rollup -c --bundleConfigAsCjs",
-    "watch": "rollup -c --watch",
+    "rollup": "rollup -c rollup.config.mjs",
+    "build": "rollup -c rollup.config.mjs",
+    "watch": "rollup -c rollup.config.mjs --watch",
     "docs-build": "sphinx-autobuild docs docs/_build/html",
     "prepare": "husky"
   },
