@@ -404,6 +404,9 @@ export class SunsynkPowerFlowCard extends LitElement {
 		const stateDayPVEnergy = this.getEntity('entities.day_pv_energy_108');
 		const stateDayGridExport = this.getEntity('entities.day_grid_export_77');
 		const stateDayAuxEnergy = this.getEntity('entities.day_aux_energy');
+		const stateGeneratorDailyEnergy = this.getEntity(
+			'entities.generator_daily_energy',
+		);
 
 		//Inverter
 		const stateInverterVoltage = this.getEntity(
@@ -537,6 +540,10 @@ export class SunsynkPowerFlowCard extends LitElement {
 		//Load
 		const stateEssentialPower = this.getEntity('entities.essential_power');
 		const stateAuxPower = this.getEntity('entities.aux_power_166');
+		const stateGeneratorPower = this.getEntity('entities.generator_power');
+		const stateGeneratorStatus = this.getEntity('entities.generator_status', {
+			state: 'off',
+		});
 		const stateNonessentialPower = this.getEntity(
 			'entities.nonessential_power',
 		);
@@ -649,6 +656,19 @@ export class SunsynkPowerFlowCard extends LitElement {
 		//Set defaults
 		const invert_aux = config.load?.invert_aux ?? false;
 		const auxPower = stateAuxPower.toPower(invert_aux);
+		// Generator is an AC source feeding the inverter, so its power direction
+		// is intentionally not inverted like the legacy AUX implementation.
+		const generatorPower = Math.max(0, stateGeneratorPower.toPower(false));
+		const generatorStatus = stateGeneratorStatus.state;
+		const showGenerator = config.generator?.show ?? false;
+		const showDailyGenerator = config.generator?.show_daily ?? false;
+		const generatorColour = this.colourConvert(config.generator?.colour);
+		const generatorOffColour = this.colourConvert(config.generator?.off_colour);
+		const generatorThreshold = Utils.toNum(config.generator?.off_threshold, 0);
+		const generatorDynamicColour =
+			config.generator?.dynamic_colour && generatorPower <= generatorThreshold
+				? generatorOffColour
+				: generatorColour;
 
 		const invert_grid = config.grid?.invert_grid ?? false;
 		const gridPower = stateGridCTPower.toPower(invert_grid);
@@ -2546,6 +2566,16 @@ export class SunsynkPowerFlowCard extends LitElement {
 			inverterColour,
 			solarColour,
 			auxOffColour,
+			generatorPower,
+			generatorStatus,
+			showGenerator,
+			showDailyGenerator,
+			generatorColour,
+			generatorOffColour,
+			generatorDynamicColour,
+			stateGeneratorPower,
+			stateGeneratorStatus,
+			stateGeneratorDailyEnergy,
 			batteryEnergy,
 			battery2Energy,
 			batteryTotalEnergy,
