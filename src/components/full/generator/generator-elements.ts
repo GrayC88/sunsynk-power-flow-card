@@ -42,15 +42,15 @@ export const renderGeneratorElements = (
 		<svg
 			id="Generator"
 			style="overflow: visible; display: ${!showGenerator ? 'none' : 'inline'};"
-			x="${config.wide ? '30%' : '3%'}"
+			x="${config.wide ? '20%' : '3%'}"
 			y="2.5%"
 		>
 			<!-- Generator source box -->
 			<rect
-				x="374"
-				y="20"
+				x="145.15"
+				y="72"
 				width="70"
-				height="55"
+				height="50"
 				rx="4.5"
 				ry="4.5"
 				fill="none"
@@ -60,8 +60,8 @@ export const renderGeneratorElements = (
 
 			${renderText(
 				'generator_name',
-				409,
-				83,
+				180,
+				68,
 				!showGenerator,
 				'st3 st8',
 				colour,
@@ -74,8 +74,8 @@ export const renderGeneratorElements = (
 				${renderPath(
 					'generator-line',
 					config.wide
-						? 'M 374 47 L 118 47 Q 108 47 108 57 L 108 162'
-						: 'M 374 47 L 190 47 Q 180 47 180 57 L 180 162',
+						? 'M 180 122 L 180 162'
+						: 'M 180 122 L 180 162',
 					showGenerator,
 					generatorDynamicColour,
 					generatorLineWidth,
@@ -105,8 +105,8 @@ export const renderGeneratorElements = (
 					undefined,
 					'mdi:generator-mobile',
 					generatorOn ? 'generator-icon' : 'generator-off-icon',
-					374,
-					10,
+					145,
+					62,
 					70,
 					70,
 				)}
@@ -115,8 +115,8 @@ export const renderGeneratorElements = (
 			${config.entities?.generator_power
 				? createTextWithPopup(
 						'generator_power',
-						409,
-						48,
+						180,
+						100,
 						!showGenerator,
 						`${largeFont !== true ? 'st14' : 'st4'} st8`,
 						colour,
@@ -130,8 +130,8 @@ export const renderGeneratorElements = (
 
 			${createTextWithPopup(
 				'generator_daily_value',
-				374,
-				12,
+				180,
+				58,
 				!showGenerator ||
 					!showDailyGenerator ||
 					!data.stateGeneratorDailyEnergy.isValid(),
