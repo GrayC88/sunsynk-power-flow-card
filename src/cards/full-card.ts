@@ -10,6 +10,8 @@ import { renderLoadElements } from '../components/full/load/load-elements';
 import { renderAuxLoadElements } from '../components/full/auxload/aux-elements';
 import { renderGeneratorElements } from '../components/full/generator/generator-elements';
 import { renderInverterElements } from '../components/full/inverter/inverter-elements';
+import { renderPath } from '../helpers/render-path';
+import { renderCircle } from '../helpers/render-circle';
 
 export const fullCard = (
 	config: sunsynkPowerFlowCardConfig,
@@ -59,6 +61,36 @@ export const fullCard = (
 
 					<!-- Generator Elements -->
 					${renderGeneratorElements(data, config)}
+
+					<!-- Generator flow is rendered in the full-card coordinate space so
+					     moving the generator block does not move the inverter endpoint. -->
+					<svg
+						id="generator-flow"
+						style="overflow: visible; display: ${!data.showGenerator ? 'none' : 'inline'};"
+					>
+						${renderPath(
+							'generator-line',
+							config.wide
+								? 'M 223 77 L 223 150 L 277 150 L 277 175 L 289 175'
+								: 'M 209 77 L 209 150 L 145 150 L 145 177',
+							data.showGenerator,
+							data.generatorDynamicColour,
+							data.generatorLineWidth,
+						)}
+						${renderCircle(
+							'generator-dot',
+							Math.min(
+								2 + data.generatorLineWidth + Math.max(data.minLineWidth - 2, 0),
+								8,
+							),
+							data.generatorPower > 0
+								? data.generatorDynamicColour
+								: 'transparent',
+							data.durationCur['generator'],
+							'0;1',
+							'#generator-line',
+						)}
+					</svg>
 
 					<!-- AUX Elements -->
 					${renderAuxLoadElements(data, config)}
