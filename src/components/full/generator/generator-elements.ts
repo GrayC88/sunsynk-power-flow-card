@@ -42,7 +42,7 @@ export const renderGeneratorElements = (
 		<svg
 			id="Generator"
 			style="overflow: visible; display: ${!showGenerator ? 'none' : 'inline'};"
-			x="${config.wide ? '20%' : '3%'}"
+			x="${config.wide ? '6%' : '3%'}"
 			y="-5%"
 		>
 			${renderText(
@@ -68,30 +68,6 @@ export const renderGeneratorElements = (
 				stroke="${colour}"
 				pointer-events="all"
 			/>
-
-			<!-- Generator -> inverter flow. The path is deliberately source-to-inverter. -->
-			<svg id="generator-flow">
-				${renderPath(
-					'generator-line',
-					config.wide
-						? 'M 180 102 L 180 148 L 125 148 L 125 177 L 145 177'
-						: 'M 180 102 L 180 148 L 145 148 L 145 177',
-					showGenerator,
-					generatorDynamicColour,
-					generatorLineWidth,
-				)}
-				${renderCircle(
-					'generator-dot',
-					Math.min(
-						2 + generatorLineWidth + Math.max(data.minLineWidth - 2, 0),
-						8,
-					),
-					generatorPower > 0 ? generatorDynamicColour : 'transparent',
-					data.durationCur['generator'],
-					'0;1',
-					'#generator-line',
-				)}
-			</svg>
 
 			<a
 				href="#"
