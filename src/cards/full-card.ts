@@ -71,8 +71,8 @@ export const fullCard = (
 						${renderPath(
 							'generator-line',
 							config.wide
-								? 'M 223 77 L 223 150 L 277 150 L 277 175 L 289 175'
-								: 'M 209 77 L 209 150 L 145 150 L 145 177',
+								? 'M 223 77 L 223 171 Q 223 181 233 181 L 289 181'
+								: 'M 209 77 L 209 167 Q 209 177 219 177 L 289 177',
 							data.showGenerator,
 							data.generatorDynamicColour,
 							data.generatorLineWidth,
