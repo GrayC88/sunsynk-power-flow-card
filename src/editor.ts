@@ -482,6 +482,10 @@ export class SunSynkCardEditor
 			'aux_colour',
 			'aux_off_colour',
 		]);
+		copy.generator = this._convertSectionColours(
+			c.generator as Record<string, unknown>,
+			['colour', 'off_colour'],
+		);
 		copy.grid = this._convertSectionColours(c.grid as Record<string, unknown>, [
 			'colour',
 			'no_grid_colour',
@@ -522,6 +526,11 @@ export class SunSynkCardEditor
 			{ name: 'show_solar', selector: { boolean: {} } },
 			{ name: 'show_battery', selector: { boolean: {} } },
 			{ name: 'show_grid', selector: { boolean: {} } },
+			{
+				name: 'generator',
+				type: 'grid',
+				schema: [{ name: 'show', selector: { boolean: {} } }],
+			},
 			{ name: 'center_no_grid', selector: { boolean: {} } },
 			{
 				name: 'decimal_places',
@@ -702,6 +711,32 @@ export class SunSynkCardEditor
 														{ name: 'pv6_max_power', selector: { entity: {} } },
 													],
 												},
+											],
+										},
+									],
+								},
+							]
+						: []),
+					...(this._config.generator?.show
+						? [
+								{
+									type: 'expandable',
+									title: 'Generator',
+									schema: [
+										{
+											name: 'generator',
+											type: 'grid',
+											schema: [
+												{ name: 'name', selector: { text: {} } },
+												{ name: 'show_daily', selector: { boolean: {} } },
+												{ name: 'dynamic_colour', selector: { boolean: {} } },
+												{ name: 'colour', selector: { color_rgb: {} } },
+												{ name: 'off_colour', selector: { color_rgb: {} } },
+												{ name: 'auto_scale', selector: { boolean: {} } },
+												{ name: 'max_power', selector: { number: {} } },
+												{ name: 'animation_speed', selector: { number: {} } },
+												{ name: 'off_threshold', selector: { number: {} } },
+												{ name: 'navigate', selector: { text: {} } },
 											],
 										},
 									],
@@ -1396,6 +1431,27 @@ export class SunSynkCardEditor
 														device_class: SensorDeviceClass.TEMPERATURE,
 													},
 												},
+											},
+										],
+									},
+								],
+							},
+							{
+								type: 'expandable',
+								title: 'Generator',
+								schema: [
+									{
+										name: 'entities',
+										type: 'grid',
+										schema: [
+											{
+												name: 'generator_power',
+												selector: { entity: { device_class: SensorDeviceClass.POWER } },
+											},
+											{ name: 'generator_status', selector: { entity: {} } },
+											{
+												name: 'generator_daily_energy',
+												selector: { entity: { device_class: SensorDeviceClass.ENERGY } },
 											},
 										],
 									},
